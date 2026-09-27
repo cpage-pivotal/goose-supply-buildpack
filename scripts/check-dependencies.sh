@@ -57,12 +57,12 @@ source "${repo_dir}/lib/installer.sh"
 for arch in amd64 arm64; do
   IFS=$'\t' read -r bootstrap_filename bootstrap_url bootstrap_sha \
     < <(bootstrap_jq_metadata "${arch}")
-  [ "${bootstrap_filename}" = "$(dependency_value "${manifest}" jq "${arch}" filename)" ] \
-    && [ "${bootstrap_url}" = "$(dependency_value "${manifest}" jq "${arch}" url)" ] \
-    && [ "${bootstrap_sha}" = "$(dependency_value "${manifest}" jq "${arch}" sha256)" ] || {
-      echo "Bootstrap metadata drift for jq/${arch}" >&2
-      exit 1
-    }
+  if [ "${bootstrap_filename}" != "$(dependency_value "${manifest}" jq "${arch}" filename)" ] \
+    || [ "${bootstrap_url}" != "$(dependency_value "${manifest}" jq "${arch}" url)" ] \
+    || [ "${bootstrap_sha}" != "$(dependency_value "${manifest}" jq "${arch}" sha256)" ]; then
+    echo "Bootstrap metadata drift for jq/${arch}" >&2
+    exit 1
+  fi
 done
 
 echo "Dependency metadata verified"
