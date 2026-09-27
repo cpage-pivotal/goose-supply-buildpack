@@ -16,7 +16,7 @@ which also configures goose from `.goose-config.yml` and `VCAP_SERVICES` for
 applications that drive goose directly.
 
 - Buildpack: **1.0.0**
-- Goose: **1.50.0**
+- Goose: **1.52.0**
 - Architectures: Linux amd64 and arm64
 
 ## Usage

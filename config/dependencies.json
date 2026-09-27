@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "dependencies": {
     "goose": {
-      "version": "1.50.0",
+      "version": "1.52.0",
       "failOnUpdate": true,
       "license": "Apache-2.0",
-      "purl": "pkg:github/aaif-goose/goose@1.50.0",
+      "purl": "pkg:github/aaif-goose/goose@1.52.0",
       "source": "https://github.com/aaif-goose/goose",
-      "sourceCommit": "4cc49a8485f7960efeceba37ac5f572459c52c7c",
+      "sourceCommit": "302b60806639ea9f0ae8f053f49f8bf0e88b26f4",
       "security": {
         "minimumSecureVersion": "1.44.0",
         "fixedAdvisories": [
@@ -21,13 +21,13 @@
       "assets": {
         "amd64": {
           "filename": "goose-x86_64-unknown-linux-gnu.tar.bz2",
-          "url": "https://github.com/aaif-goose/goose/releases/download/v1.50.0/goose-x86_64-unknown-linux-gnu.tar.bz2",
-          "sha256": "8b5dfae07d16e352fbabe3122339a9270ea30e3b29246c81d6a227ed5f35e904"
+          "url": "https://github.com/aaif-goose/goose/releases/download/v1.52.0/goose-x86_64-unknown-linux-gnu.tar.bz2",
+          "sha256": "2609109a43012ddece0f78e1e4a179b82749c424f2164b97186d3ad38518d262"
         },
         "arm64": {
           "filename": "goose-aarch64-unknown-linux-gnu.tar.bz2",
-          "url": "https://github.com/aaif-goose/goose/releases/download/v1.50.0/goose-aarch64-unknown-linux-gnu.tar.bz2",
-          "sha256": "21918884e8c755e46f66c9476a03e846cb02a73edf8ca958e41291efe9845ab9"
+          "url": "https://github.com/aaif-goose/goose/releases/download/v1.52.0/goose-aarch64-unknown-linux-gnu.tar.bz2",
+          "sha256": "7923f7b7c76f0ebf29b8622c8b9a4c486f6ce60475967f0f63246e7399f0097c"
         }
       }
     },

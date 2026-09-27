@@ -8,7 +8,7 @@ version it pins.
 | Component | Supported |
 | --- | --- |
 | Buildpack 1.0.x | Yes |
-| Goose 1.50.x bundled here | Yes |
+| Goose 1.52.x bundled here | Yes |
 | Earlier versions | No |
 
 ## Reporting a vulnerability
@@ -36,8 +36,8 @@ issue is in this buildpack or in upstream goose.
 
 ### Known upstream Goose advisories
 
-As of 2026-09-11, Goose 1.50.0 is the latest upstream release and current
-upstream `main` still contains the following RustSec finding:
+As of 2026-09-27, Goose 1.52.0 is the latest upstream release and still
+contains the following RustSec finding:
 
 - `RUSTSEC-2023-0071` affects `rsa` 0.9.10, has no fixed release, and is
   present in the upstream lockfile but not in Goose's all-target workspace
