@@ -37,14 +37,21 @@ issue is in this buildpack or in upstream goose.
 ### Known upstream Goose advisories
 
 As of 2026-10-20, Goose 1.55.0 is the latest upstream release and still
-contains the following RustSec finding:
+contains the following RustSec findings:
 
 - `RUSTSEC-2023-0071` affects `rsa` 0.9.10, has no fixed release, and is
   present in the upstream lockfile but not in Goose's all-target workspace
   dependency graph.
+- `RUSTSEC-2026-0346`, `RUSTSEC-2026-0347`, `RUSTSEC-2026-0348` and
+  `RUSTSEC-2026-0349` affect `rustls` 0.23.45 and are fixed in 0.23.46.
+- `RUSTSEC-2026-0367`, `RUSTSEC-2026-0368` and `RUSTSEC-2026-0369` affect
+  `zip` 8.6.0 and are fixed in 9.0.0.
+
+The `rustls` and `zip` findings were published while Goose 1.54.0 was pinned,
+which carries the same versions; no Goose release fixes them yet.
 
 CI audits the pinned goose source commit with `cargo audit`, ignores only the
-reviewed ID above, and fails on any other advisory. Remove the exception as soon
-as a goose release updates the affected dependency. Until then, keep Cloud
+reviewed IDs above, and fails on any other advisory. Remove each exception as
+soon as a goose release updates the affected dependency. Until then, keep Cloud
 Foundry memory limits and restart policies as defense in depth against denial of
 service for the `rsa` finding.
