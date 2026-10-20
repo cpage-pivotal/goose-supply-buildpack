@@ -57,7 +57,7 @@ jobs:
           tool: cargo-audit@0.22.2
 
       - name: Audit pinned Goose Rust dependencies
-        # Goose 1.54.0 still contains this reviewed advisory (rsa 0.9.10 has
+        # Goose 1.55.0 still contains this reviewed advisory (rsa 0.9.10 has
         # no fixed release). Keep this list narrow so every new advisory
         # fails CI.
         # See SECURITY.md#known-upstream-goose-advisories.
