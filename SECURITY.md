@@ -42,11 +42,18 @@ contains the following RustSec findings:
 - `RUSTSEC-2026-0367`, `RUSTSEC-2026-0368` and `RUSTSEC-2026-0369` affect
   `zip` 8.6.0 and are fixed in 9.0.0. The upstream lockfile carries both 8.6.0
   and 9.0.5.
+- `RUSTSEC-2026-0414` affects `pulldown-cmark` 0.13.4 and is fixed in 0.13.5.
+  It is a denial of service that applies only when a parser is built with
+  `ENABLE_WIKILINKS` (alone or through `Options::all()`). Goose uses
+  `pulldown-cmark` only in `goose-local-inference`'s tool emulation, which
+  calls `Parser::new` with default options, so the flaw is not reachable.
 
 The `zip` findings were published while Goose 1.54.0 was pinned, which carries
-the same version; no Goose release fixes them yet. Goose 1.57.0 no longer
-depends on `rsa` (`RUSTSEC-2023-0071`) and moved `rustls` to 0.23.46
-(`RUSTSEC-2026-0346` to `RUSTSEC-2026-0349`), so those exceptions are gone.
+the same version; no Goose release fixes them yet. The `pulldown-cmark`
+finding was published while Goose 1.55.0 was pinned, which carries the same
+version. Goose 1.57.0 no longer depends on `rsa` (`RUSTSEC-2023-0071`) and
+moved `rustls` to 0.23.46 (`RUSTSEC-2026-0346` to `RUSTSEC-2026-0349`), so
+those exceptions are gone.
 
 CI audits the pinned goose source commit with `cargo audit`, ignores only the
 reviewed IDs above, and fails on any other advisory. Remove each exception as

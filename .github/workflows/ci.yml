@@ -58,14 +58,17 @@ jobs:
 
       - name: Audit pinned Goose Rust dependencies
         # Goose 1.57.0 still contains these reviewed advisories: zip 8.6.0
-        # (fixed in 9.0.0), already present in Goose 1.54.0. Keep this
-        # list narrow so every new advisory fails CI.
+        # (fixed in 9.0.0), already present in Goose 1.54.0, and
+        # pulldown-cmark 0.13.4 (fixed in 0.13.5), already present in Goose
+        # 1.55.0 and not reachable because goose parses with default options.
+        # Keep this list narrow so every new advisory fails CI.
         # See SECURITY.md#known-upstream-goose-advisories.
         run: |
           cargo audit --file upstream-goose/Cargo.lock \
             --ignore RUSTSEC-2026-0367 \
             --ignore RUSTSEC-2026-0368 \
-            --ignore RUSTSEC-2026-0369
+            --ignore RUSTSEC-2026-0369 \
+            --ignore RUSTSEC-2026-0414
 
       - name: Upload validation artifacts
         if: always()
