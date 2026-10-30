@@ -57,18 +57,12 @@ jobs:
           tool: cargo-audit@0.22.2
 
       - name: Audit pinned Goose Rust dependencies
-        # Goose 1.55.0 still contains these reviewed advisories: rsa 0.9.10
-        # (no fixed release), rustls 0.23.45 (fixed in 0.23.46) and zip 8.6.0
-        # (fixed in 9.0.0), all already present in Goose 1.54.0. Keep this
+        # Goose 1.57.0 still contains these reviewed advisories: zip 8.6.0
+        # (fixed in 9.0.0), already present in Goose 1.54.0. Keep this
         # list narrow so every new advisory fails CI.
         # See SECURITY.md#known-upstream-goose-advisories.
         run: |
           cargo audit --file upstream-goose/Cargo.lock \
-            --ignore RUSTSEC-2023-0071 \
-            --ignore RUSTSEC-2026-0346 \
-            --ignore RUSTSEC-2026-0347 \
-            --ignore RUSTSEC-2026-0348 \
-            --ignore RUSTSEC-2026-0349 \
             --ignore RUSTSEC-2026-0367 \
             --ignore RUSTSEC-2026-0368 \
             --ignore RUSTSEC-2026-0369
