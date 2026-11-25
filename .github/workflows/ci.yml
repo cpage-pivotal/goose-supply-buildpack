@@ -57,11 +57,11 @@ jobs:
           tool: cargo-audit@0.22.2
 
       - name: Audit pinned Goose Rust dependencies
-        # Goose 1.59.0 still contains these reviewed advisories: zip 8.6.0
+        # Goose 1.61.0 still contains these reviewed advisories: zip 8.6.0
         # (fixed in 9.0.0), already present in Goose 1.54.0, and
-        # libsqlite3-sys 0.37.0, quinn-proto 0.11.18, quinn-udp 0.5.15 and
-        # rmcp 3.4.1, already present in Goose 1.57.0. No Goose release
-        # fixes them yet. Keep this list narrow so every new advisory fails CI.
+        # quinn-proto 0.11.18 and quinn-udp 0.5.15, already present in
+        # Goose 1.57.0. No Goose release fixes them yet. Keep this list
+        # narrow so every new advisory fails CI.
         # See SECURITY.md#known-upstream-goose-advisories.
         run: |
           cargo audit --file upstream-goose/Cargo.lock \
@@ -69,10 +69,6 @@ jobs:
             --ignore RUSTSEC-2026-0368 \
             --ignore RUSTSEC-2026-0369 \
             --ignore RUSTSEC-2026-0429 \
-            --ignore RUSTSEC-2026-0457 \
-            --ignore RUSTSEC-2026-0459 \
-            --ignore RUSTSEC-2026-0461 \
-            --ignore RUSTSEC-2026-0462 \
             --ignore RUSTSEC-2026-0523 \
             --ignore RUSTSEC-2026-0524 \
             --ignore RUSTSEC-2026-0538
