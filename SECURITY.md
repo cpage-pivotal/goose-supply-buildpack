@@ -42,14 +42,28 @@ contains the following RustSec findings:
 - `RUSTSEC-2026-0367`, `RUSTSEC-2026-0368`, `RUSTSEC-2026-0369` and
   `RUSTSEC-2026-0429` affect `zip` 8.6.0 and are fixed in 9.0.0. The upstream
   lockfile carries both 8.6.0 and 9.8.1.
+- `RUSTSEC-2026-0545` (AES entries returned without checking their
+  authentication code when the data ends early or is empty),
+  `RUSTSEC-2026-0546` (`ZipArchive::extract` can write outside the
+  destination through absolute or chained symlink targets) and
+  `RUSTSEC-2026-0547` (legacy Shrink, Reduce and Implode decoders preallocate
+  the declared uncompressed size) affect `zip` 8.6.0 and are fixed in 9.0.0.
+  `RUSTSEC-2026-0548` (`ZipStreamReader` extracts entries under local-header
+  names that can differ from the central directory) affects the same version
+  and is fixed in 9.0.5.
 - `RUSTSEC-2026-0523` and `RUSTSEC-2026-0524` affect `quinn-proto` 0.11.18
   and are fixed in 0.11.19.
 - `RUSTSEC-2026-0538` affects `quinn-udp` 0.5.15 and is fixed in 0.5.16.
+- `RUSTSEC-2026-0594` (private cookie nonces can repeat in processes that
+  fork) affects `cookie` 0.18.2 and is fixed in 0.18.3.
 
 The first three `zip` findings were published while Goose 1.54.0 was pinned,
 which carries the same version. The `quinn` findings were published while
 Goose 1.57.0 was pinned, which carries the same versions, so staying on 1.57.0
-avoids none of them. No Goose release fixes them yet.
+avoids none of them. `RUSTSEC-2026-0545` to `RUSTSEC-2026-0548` and
+`RUSTSEC-2026-0594` were first reported by CI when Goose 1.61.0 was proposed;
+Goose 1.59.0 carries the same `zip` and `cookie` versions, so staying on it
+avoids none of them either. No Goose release fixes them yet.
 
 Goose 1.61.0 moved `rmcp` to 3.11.0 (`RUSTSEC-2026-0457`, `RUSTSEC-2026-0461`,
 `RUSTSEC-2026-0462`) and `libsqlite3-sys` to 0.40.0 (`RUSTSEC-2026-0459`),

@@ -58,10 +58,11 @@ jobs:
 
       - name: Audit pinned Goose Rust dependencies
         # Goose 1.61.0 still contains these reviewed advisories: zip 8.6.0
-        # (fixed in 9.0.0), already present in Goose 1.54.0, and
+        # (fixed in 9.0.0 and 9.0.5), already present in Goose 1.54.0,
         # quinn-proto 0.11.18 and quinn-udp 0.5.15, already present in
-        # Goose 1.57.0. No Goose release fixes them yet. Keep this list
-        # narrow so every new advisory fails CI.
+        # Goose 1.57.0, and cookie 0.18.2, already present in Goose 1.59.0.
+        # No Goose release fixes them yet. Keep this list narrow so every
+        # new advisory fails CI.
         # See SECURITY.md#known-upstream-goose-advisories.
         run: |
           cargo audit --file upstream-goose/Cargo.lock \
@@ -71,7 +72,12 @@ jobs:
             --ignore RUSTSEC-2026-0429 \
             --ignore RUSTSEC-2026-0523 \
             --ignore RUSTSEC-2026-0524 \
-            --ignore RUSTSEC-2026-0538
+            --ignore RUSTSEC-2026-0538 \
+            --ignore RUSTSEC-2026-0545 \
+            --ignore RUSTSEC-2026-0546 \
+            --ignore RUSTSEC-2026-0547 \
+            --ignore RUSTSEC-2026-0548 \
+            --ignore RUSTSEC-2026-0594
 
       - name: Upload validation artifacts
         if: always()
